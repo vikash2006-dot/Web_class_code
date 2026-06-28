@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>User page............</h1>
+    <h1>Name: <%=student.name %>
+     </h1>
+     <h2>color= <%=color %></h2>
+     <% if(student.age<18){ %>
+        <h2>Can vote</h2>
+     <% } %>
+     <% for (let index = flag ; index < 25; index++) { %>
+        <span> <b><%= index  %></b></span> 
+        
+     <% } %> 
+</body>
+</html>
