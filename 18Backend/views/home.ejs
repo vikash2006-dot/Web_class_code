@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .container{
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h1{
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .btn{
+            display: block;
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .btn:hover{
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Student Profile</h1>
+
+        <a class="btn" href="http://localhost:4000/getdata">
+            GET STUDENT DATA
+        </a>
+
+        <a class="btn" href="http://localhost:4000/insertdata">
+            ADD STUDENT DATA
+        </a>
+    </div>
+
+</body>
+</html>

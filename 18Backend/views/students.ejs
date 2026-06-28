@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Data</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 30px;
+        }
+
+        h1{
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .container{
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .card{
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        }
+
+        .card p{
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .label{
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Students Data Profiles</h1>
+
+    <div class="container">
+
+        <% allStudent.forEach((element)=> { %>
+
+            <div class="card">
+                <p><span class="label">Name:</span> <%= element.name %></p>
+                <p><span class="label">Age:</span> <%= element.age %></p>
+                <p><span class="label">Course:</span> <%= element.course %></p>
+                <a href="/delete/<%=element._id %>">delete</a>
+                <a href="/edit/<%=element._id %>">edit</a>
+            </div>
+
+        <% }) %>
+
+    </div>
+
+</body>
+</html>
