@@ -1,12 +1,12 @@
 const mongoose=require("mongoose");
 
 const connectDB= async ()=>{
-    try{
-        mongoose.connect("mongodb://localhost:27017/Product")
-        console.log("DB Connected");        
-    }
-    catch(err){
-        console.log(err);       
-    }
-};
-module.exports= connectDB;
+    mongoose.connect("mongodb://127.0.0.1:27017/Student_Database")
+    .then(()=>{
+        console.log("DB Connected")
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+}
+module.exports=connectDB;

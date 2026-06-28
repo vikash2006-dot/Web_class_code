@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(-45deg, #1e3c72, #2a5298, #6a3093, #a044ff);
+            background-size: 400% 400%;
+            animation: gradientShift 12s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* floating blurred orbs for depth */
+        body::before,
+        body::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.35;
+            z-index: 0;
+        }
+
+        body::before {
+            width: 350px;
+            height: 350px;
+            background: #ff6ec7;
+            top: -80px;
+            left: -80px;
+            animation: float1 9s ease-in-out infinite;
+        }
+
+        body::after {
+            width: 400px;
+            height: 400px;
+            background: #00e5ff;
+            bottom: -100px;
+            right: -100px;
+            animation: float2 11s ease-in-out infinite;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(60px, 40px); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-50px, -30px); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 35px;
+            padding: 50px 60px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 24px;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-align: center;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+            background: linear-gradient(90deg, #ffffff, #d6e4ff, #ffffff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            width: 280px;
+        }
+
+        button {
+            position: relative;
+            border: none;
+            outline: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        button:nth-of-type(1) { animation-delay: 0.2s; }
+        button:nth-of-type(2) { animation-delay: 0.4s; }
+        button:nth-of-type(3) { animation-delay: 0.6s; }
+
+        button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(167, 119, 227, 0.35), transparent);
+            transition: left 0.5s ease;
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        button:active {
+            transform: translateY(-1px) scale(0.99);
+        }
+
+        button a {
+            display: block;
+            padding: 16px 24px;
+            text-decoration: none;
+            color: #3c2d63;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Dashboard</h1>
+        <div class="btn-group">
+            <button><a href="/getdata">View Student Details</a></button>
+            <button><a href="/addData">Add Student Details</a></button>
+            <button><a href="/search">Search Student Details</a></button>
+        </div>
+    </div>
+</body>
+</html>

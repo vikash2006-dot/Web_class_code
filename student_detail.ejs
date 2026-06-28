@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            min-height: 100vh;
+            padding: 60px 20px;
+            position: relative;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #1e3c72, #2a5298, #6a3093, #a044ff);
+            background-size: 400% 400%;
+            animation: gradientShift 12s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        body::before {
+            width: 350px;
+            height: 350px;
+            background: #ff6ec7;
+            top: -80px;
+            left: -80px;
+            animation: float1 9s ease-in-out infinite;
+        }
+
+        body::after {
+            width: 400px;
+            height: 400px;
+            background: #00e5ff;
+            bottom: -100px;
+            right: -100px;
+            animation: float2 11s ease-in-out infinite;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(60px, 40px); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-50px, -30px); }
+        }
+
+        h1 {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #ffffff;
+            font-size: 2.4rem;
+            letter-spacing: 1px;
+            margin-bottom: 45px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+            background: linear-gradient(90deg, #ffffff, #d6e4ff, #ffffff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 26px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 18px;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            padding: 24px 26px;
+            opacity: 0;
+            transform: translateY(25px);
+            animation: fadeInUp 0.6s ease forwards;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card p {
+            color: #f1f1f8;
+            font-size: 0.98rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .card .label {
+            font-weight: 700;
+            color: #c9b6ff;
+            margin-right: 6px;
+        }
+
+        .card .btn-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .card button {
+            flex: 1;
+            position: relative;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+        }
+
+        .card button:active {
+            transform: translateY(0) scale(0.97);
+        }
+
+        .card button a {
+            display: block;
+            padding: 10px 14px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+
+        .card button.delete-btn {
+            background: rgba(226, 75, 74, 0.9);
+        }
+
+        .card button.delete-btn a {
+            color: #ffffff;
+        }
+
+        .card button.edit-btn {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .card button.edit-btn a {
+            color: #3c2d63;
+        }
+    </style>
+</head>
+<body>
+    <h1><b>STUDENT DETAILS</b></h1>
+    <div class="container">
+
+        <% allData.forEach((element, index)=> { %>
+
+            <div class="card" style="animation-delay:  index * 0.08 s">
+                <p><span class="label">Name:</span> <%= element.name %></p>
+                <p><span class="label">Age:</span> <%= element.age %></p>
+                <p><span class="label">Email:</span> <%= element.email %></p>
+                <p><span class="label">Course:</span> <%= element.course %></p>
+                <p><span class="label">City:</span> <%= element.city %></p>
+                <div class="btn-row">
+                    <button class="delete-btn"><a href="/delete/<%=element._id %>">delete</a></button>
+                    <button class="edit-btn"><a href="/edit/<%=element._id %>">edit</a></button>
+                </div>
+            </div>
+
+        <% }) %>
+
+    </div>
+</body>
+</html>
